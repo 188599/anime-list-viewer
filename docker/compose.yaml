@@ -1,0 +1,47 @@
+version: '3.4'
+
+services:
+  webapi:
+    image: webapi
+    build:
+      context: ..
+      dockerfile: backend/WebAPI/Dockerfile
+    ports:
+      - 5195:5195
+    environment:
+      - ConnectionStrings__AnimeListViewer=Server=mssql;Database=AnimeListViewerDB;User Id=SA;Password=yourStrong(!)Password;TrustServerCertificate=True;
+    depends_on:
+      mssql:
+        condition: service_healthy
+
+  workerservice:
+    image: workerservice
+    build:
+      context: ..
+      dockerfile: backend/WorkerService/Dockerfile
+    ports:
+      - 5196:5196
+    environment:
+      - ConnectionStrings__AnimeListViewer=Server=mssql;Database=AnimeListViewerDB;User Id=SA;Password=yourStrong(!)Password;TrustServerCertificate=True;
+      - ConnectionStrings__Hangfire=Server=mssql;Database=HangfireDB;User Id=SA;Password=yourStrong(!)Password;TrustServerCertificate=True;
+    depends_on:
+      mssql:
+        condition: service_healthy
+
+  mssql:
+    image: mssql
+    build: ./mssql
+    restart: always
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=yourStrong(!)Password
+      - MSSQL_PID=Evaluation
+    healthcheck:
+      # -C disable checks for encryption
+      test: [ "CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P $$MSSQL_SA_PASSWORD -Q 'SELECT 1'" ]
+      interval: 1s
+      timeout: 30s
+      retries: 30
+      start_period: 5s
