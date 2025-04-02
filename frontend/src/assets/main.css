@@ -1,0 +1,252 @@
+@import './base.css';
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #121212;
+  font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #fdfdfd;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  margin-bottom: 1rem;
+  font-size: inherit;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+ul,
+ol,
+dl {
+  margin-bottom: 1rem;
+  list-style-position: outside;
+  line-height: 1.6;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+@font-face {
+  font-family: 'livechart-icons';
+  src: url(https://s.livechart.me/assets/livechart-icons-0c43b1ab9c03326aa3d39732cc3e81fde8280335c1677382935250c10c4ef4d4.eot);
+  src:
+    url(https://s.livechart.me/assets/livechart-icons-0c43b1ab9c03326aa3d39732cc3e81fde8280335c1677382935250c10c4ef4d4.eot#iefix)
+      format('embedded-opentype'),
+    url(https://s.livechart.me/assets/livechart-icons-12644aae98ae893a5cca420ac98b669aa60d809152e71235f9d607c9027b8da6.woff2)
+      format('woff2'),
+    url(https://s.livechart.me/assets/livechart-icons-d3e84973715224a8c98900b52817c578ad1ab9ef1348e7856f7b6a3ca50c4f21.woff)
+      format('woff'),
+    url(https://s.livechart.me/assets/livechart-icons-93571739dd658ea2dcf87e168a2014c741be0b4e7242b090e8964c925d905c37.ttf)
+      format('truetype'),
+    url(https://s.livechart.me/assets/livechart-icons-ca16ba93f5cbed494e5bb1ae3adadb8259f882644f3dca2825cbc7cf25daedc1.svg#livechart-icons)
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon-spin {
+  -animation: spin 0.7s infinite linear;
+  -webkit-animation: spin 0.7s infinite linear;
+}
+
+.icon-rotated-90:before {
+  transform: rotate(90deg);
+}
+
+.icon,
+.icon-checkbox-wrapper input + .icon,
+.icon-checkbox-wrapper ul.caret-list input + li:before,
+ul.caret-list .icon-checkbox-wrapper input + li:before,
+.icon-checkbox-wrapper input + .expand-collapse-icon,
+.icon-checkbox-wrapper input + .user-submission-delete-label:before,
+.user-submission-delete-label:before,
+.expand-collapse-icon,
+ul.caret-list li:before,
+[class^='icon-']::before,
+[class*=' icon-']::before {
+  font-family: 'livechart-icons';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  margin-left: 0.2em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search:before {
+  content: '\e812';
+}
+
+.button {
+  &:focus,
+  &:hover {
+    outline: none;
+    text-decoration: none;
+
+    &.clear {
+      color: #0069ca;
+    }
+  }
+}
+
+.button.clear {
+  &,
+  &.disabled,
+  &.disabled:hover,
+  &.disabled:focus,
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
+    color: #95ccff;
+  }
+}
+
+.button.clear {
+  &,
+  &:hover,
+  &:hover.disabled,
+  &:hover[disabled],
+  &:focus,
+  &:focus.disabled,
+  &:focus[disabled] {
+    border-color: transparent;
+    background-color: transparent;
+  }
+}
+
+.button {
+  margin: 0;
+  height: 26px;
+  line-height: 26px;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: inherit !important;
+
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 1rem 0;
+  padding: 0.85em 1em;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition:
+    background-color 0.25s ease-out,
+    color 0.25s ease-out;
+  font-family: inherit;
+  font-size: 0.9rem;
+  appearance: none;
+  -webkit-appearance: none;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon-search {
+  color: rgba(253, 253, 253, 0.6);
+  line-height: 26px;
+  position: absolute;
+  margin-left: 0.5em;
+}
+
+input[type='text'], input[type='number'] {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 2.4375rem;
+  margin: 0 0 1rem;
+  padding: 0.5rem;
+  border: 1px solid rgba(253, 253, 253, 0.2);
+  border-radius: 0;
+  background-color: rgba(30, 30, 30, 0.85);
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #fdfdfd;
+  transition:
+    box-shadow 0.5s,
+    border-color 0.25s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+
+[class^='form-'],
+[class^=' form-'] {
+  display: inline-block;
+  white-space: nowrap;
+  height: 26px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+
+  input,
+  select {
+    height: 26px;
+    padding-left: 2em;
+    margin: 0;
+
+    &:focus {
+      outline: none;
+      border: 1px solid rgba(253, 253, 253, 0.45);
+      background-color: #1e1e1e;
+      box-shadow: 0 0 5px rgba(253, 253, 253, 0.3);
+      transition:
+        box-shadow 0.5s,
+        border-color 0.25s ease-in-out;
+    }
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+select {
+  height: 2.4375rem;
+  margin: 0 0 1rem;
+  padding: 0.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid rgba(253, 253, 253, 0.2);
+  border-radius: 0;
+  background-color: #1e1e1e;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #fdfdfd;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: rgb%28253, 253, 253%29"></polygon></svg>');
+  background-origin: content-box;
+  background-position: right -1rem center;
+  background-repeat: no-repeat;
+  background-size: 9px 6px;
+  padding-right: 1.5rem;
+  transition:
+    box-shadow 0.5s,
+    border-color 0.25s ease-in-out;
+}
