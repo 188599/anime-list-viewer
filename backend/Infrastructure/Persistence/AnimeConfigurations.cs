@@ -1,5 +1,5 @@
 using Domain.AggregatesModel.AnimeAggregate;
-using Domain.SeedWork;
+using Domain.Common.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -25,12 +25,13 @@ public class AnimeConfigurations : IEntityTypeConfiguration<Anime>
         });
         builder.Property(a => a.Description);
         builder.Property(a => a.SeasonYear);
-        builder.Property(a => a.Season).HasConversion(s => s.Id, id => Enumeration.FromValue<MediaSeason>(id));
+        builder.Property(a => a.Season).HasConversion(s => s!.Id, id => Enumeration.FromValue<MediaSeason>(id));
         builder.Property(a => a.Genres);
-        builder.Property(a => a.Status).HasConversion(s => s.Id, id => Enumeration.FromValue<MediaStatus>(id));
-        builder.Property(a => a.Source).HasConversion(s => s.Id, id => Enumeration.FromValue<MediaType>(id));
+        builder.Property(a => a.Status).HasConversion(s => s!.Id, id => Enumeration.FromValue<MediaStatus>(id));
+        builder.Property(a => a.Source).HasConversion(s => s!.Id, id => Enumeration.FromValue<MediaType>(id));
         builder.Property(a => a.AverageScore);
         builder.Property(a => a.EpisodeCount);
+        builder.Property(a => a.Duration);
         builder.Property(a => a.ImageUrl);
     }
 }

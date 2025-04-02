@@ -1,4 +1,4 @@
-namespace Domain.SeedWork;
+namespace Domain.Common.Models;
 
 public abstract class Entity
 {

@@ -1,3 +1,3 @@
-namespace Domain.SeedWork;
+namespace Domain.Common.Models;
 
 public interface IAggregateRoot { }

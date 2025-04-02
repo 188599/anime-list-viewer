@@ -1,14 +1,25 @@
 using System.Reflection;
 
-namespace Domain.SeedWork;
+namespace Domain.Common.Models;
 
 public abstract class Enumeration : IComparable
 {
+
+    private readonly string[] _aliases = [];
+
     public string Name { get; private set; }
 
     public int Id { get; private set; }
 
-    protected Enumeration(int id, string name) => (Id, Name) = (id, name);
+    protected Enumeration(int id, string name, params string[] aliases)
+    {
+        (Id, Name) = (id, name);
+
+        if (aliases.Length > 0)
+        {
+            _aliases = aliases;
+        }
+    }
 
     public override string ToString() => Name;
 
@@ -48,7 +59,8 @@ public abstract class Enumeration : IComparable
 
     public static T FromDisplayName<T>(string displayName) where T : Enumeration
     {
-        var matchingItem = Parse<T, string>(displayName, "display name", item => item.Name == displayName);
+        var matchingItem = Parse<T, string>(displayName, "display name", item => string.Equals(item.Name, displayName, StringComparison.OrdinalIgnoreCase) ||
+                                                                                  item._aliases.Any(alias => string.Equals(alias, displayName, StringComparison.OrdinalIgnoreCase)));
         return matchingItem;
     }
 

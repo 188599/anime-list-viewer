@@ -1,0 +1,19 @@
+# dotenv environment variable files
+.env
+.env.test
+.env.production
+
+# VS Code
+.vscode/
+
+# ASP.NET Core specific
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Core publish output
+wwwroot/
+publish/

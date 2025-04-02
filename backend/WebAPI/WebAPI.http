@@ -1,0 +1,21 @@
+### GET http://localhost:5195/anime/list
+GET http://localhost:5195/anime/list
+
+### GET http://localhost:5195/anime/list?filterByTitle
+GET http://localhost:5195/anime/list?filterByTitle=Cowboy
+
+### GET http://localhost:5195/anime/list?filterByGenres
+GET http://localhost:5195/anime/list?filterByGenre=Mystery
+
+### GET http://localhost:5195/anime/list?filterByGenres
+GET http://localhost:5195/anime/list?filterByGenre=Mystery&filterByGenre=Sports
+
+### GET http://localhost:5195/anime/list?filterByYear
+GET http://localhost:5195/anime/list?filterByYear=2002
+
+### GET http://localhost:5195/anime/list?filterByScore
+GET http://localhost:5195/anime/list?filterByScore=85
+
+### GET http://localhost:5195/anime/genres
+GET http://localhost:5195/anime/genres
+
