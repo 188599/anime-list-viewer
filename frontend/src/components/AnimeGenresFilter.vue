@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import axios from 'axios'
-import { computed, ref } from 'vue'
+import { computed, inject, ref } from 'vue'
 
 const model = defineModel<Set<string>>({ default: [] })
 const genres = ref<string[]>([])
@@ -19,10 +19,12 @@ const currentValue = computed(() => {
   return model.value.size > 0 ? Array.from(model.value)[0] : ''
 })
 
+const apiUrl = inject('apiUrl')
+
 axios
   .request({
     method: 'get',
-    url: 'http://localhost:5195/anime/genres',
+    url: `${apiUrl}/anime/genres`,
   })
   .then((response) => {
     genres.value = response.data

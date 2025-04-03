@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { inject, ref } from 'vue'
 import axios from 'axios'
 import AnimeCard from './components/AnimeCard.vue'
 import type { Anime } from './models/anime'
@@ -8,8 +8,10 @@ import AnimeFilter from './components/AnimeFilter.vue'
 
 const data = ref<Anime[]>([])
 
+const apiUrl = inject('apiUrl')
+
 axios
-  .get<Anime[]>(`http://localhost:5195/anime/list`, {
+  .get<Anime[]>(`${apiUrl}/anime/list`, {
     params: new URLSearchParams(window.location.search),
   })
   .then((response) => {

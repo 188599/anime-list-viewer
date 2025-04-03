@@ -28,6 +28,18 @@ services:
       mssql:
         condition: service_healthy
 
+  frontend:
+    image: frontend
+    build:
+      context: ../
+      dockerfile: docker/nginx/Dockerfile
+    ports:
+      - 80:80
+    environment:
+      - API_URL=http://webapi:5195
+    depends_on:
+      - webapi
+
   mssql:
     image: mssql
     build: ./mssql

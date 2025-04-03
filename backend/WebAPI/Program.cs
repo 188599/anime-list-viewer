@@ -57,14 +57,14 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.MapGet("/anime/list", async (
+app.MapGet("api/anime/list", async (
     string? filterByTitle,
     string[] filterByGenre,
     int? filterByYear,
     string? filterByScore, ISender mediator) => 
     await mediator.Send(new AnimeQuery(filterByTitle, filterByGenre, filterByYear, filterByScore)));
 
-app.MapGet("/anime/genres", async (ISender mediator) => await mediator.Send(new GenresQuery()));
+app.MapGet("api/anime/genres", async (ISender mediator) => await mediator.Send(new GenresQuery()));
 
 app.UseHttpsRedirection();
 
